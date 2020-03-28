@@ -1,9 +1,13 @@
 from guizero import App, ListBox, TextBox, PushButton
 
-from quiz import Quiz
-from quiz_app import QuizApp
-from game_master import GameMaster
-from reader import SerialReader
+from quizrunner.quiz import Quiz
+from quizrunner.quiz_app import QuizApp
+from quizrunner.game_master import GameMaster
+from quizrunner.reader import SerialReader
+
+import pkg_resources
+
+
 
 # TODO: add labels above team list, scores
 
@@ -25,8 +29,8 @@ class GuiApp(App, QuizApp):
         self._next_button.disable()
         self._done_button = PushButton(self, text='Done', command=self.start_round, grid=[2, 1])
         self._done_button.disable()
-        self._ok_button = PushButton(self, image='tick.png', command=self._correct, grid=[1, 2])
-        self._wrong_button = PushButton(self, image='cross.png', command=self._wrong, grid=[2, 2])
+        self._ok_button = PushButton(self, image=pkg_resources.resource_filename('quizrunner','tick.png'), command=self._correct, grid=[1, 2])
+        self._wrong_button = PushButton(self, image=pkg_resources.resource_filename('quizrunner','cross.png'), command=self._wrong, grid=[2, 2])
         self._hide_checks()
 
     def _correct(self):
@@ -87,7 +91,9 @@ class GuiApp(App, QuizApp):
         for team_name in scores:
             self._score_list.append('%s: %d' % (team_name, scores[team_name]))
 
-
-if __name__ == '__main__':
+def main():
     app = GuiApp(SerialReader())
     app.display()
+
+if __name__ == '__main__':
+    main()

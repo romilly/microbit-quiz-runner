@@ -11,7 +11,7 @@ You'll need a USB data cable to connect the PC and the runner micro:bit and a po
 
 ## Software installation
 
-Clone this repository into the directory of your choice by running `git clone xxx` in that dictory.
+Clone this repository into the directory of your choice by running `git clone https://github.com/romilly/microbit-quiz-runner` in that directory.
 
 I use the mu editor to install software on the micro:bits, but you can use another technique if you prefer.
 
